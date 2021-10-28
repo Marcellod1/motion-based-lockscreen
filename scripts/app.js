@@ -130,6 +130,7 @@ $(document).ready(function(){
           $("#push-up-button").css("transform", "scale(1.0)");
           mode = 1;
           // Change canvas gif depending on mode
+          $("#canvas").attr("src","resources/img/set-up-push-up.gif");
           $("#button-container").hide();
           $("#canvas-container").show();
           countdown(BUFFER_TIME);
@@ -144,9 +145,10 @@ $(document).ready(function(){
   $("#squat-button").mouseup(function(e){
           $("#squat-button").css("transform", "scale(1.0)");
           mode = 2;
+          // Change canvas gif depending on mode
+          $("#canvas").attr("src","resources/img/setup-squats.gif");
           $("#button-container").hide();
           $("#canvas-container").show();
-          $("#canvas").attr("src","resources/img/Setup-squats.gif");
           countdown(BUFFER_TIME);
   });
 
