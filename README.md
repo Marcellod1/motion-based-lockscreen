@@ -1,2 +1,2 @@
-# motion-based-lockscreen
-A motion based lock screen concept
+# ocr-lockscreen
+A lockscreen concept using Optical Character Recognition (OCR)
