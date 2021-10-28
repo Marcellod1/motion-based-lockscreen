@@ -35,7 +35,7 @@ $(document).ready(function(){
 
             // Init teachable machine and webcam
             clearInterval(timer);
-            init(mode);
+            init();
         
         } else {
           countdown_str = remainingTime;
@@ -47,7 +47,7 @@ $(document).ready(function(){
     }
 
 
-  async function init(mode) {
+  async function init() {
     var URL = ""
     
     if(mode == 1) URL = PUSH_UP_MODEL_URL;
@@ -92,8 +92,7 @@ $(document).ready(function(){
       else if (mode == 1) counter_str = "Push-ups: " + currActions;
       else if (mode == 2) counter_str = "Squats: " + currActions;
     }
-    
-    console.log(mode);
+
     // Update counter DOM element
     $("#counter").text(counter_str);
     window.requestAnimationFrame(loop);
