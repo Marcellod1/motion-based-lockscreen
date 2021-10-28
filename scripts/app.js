@@ -27,9 +27,15 @@ $(document).ready(function(){
         $("#countdown").text(countdown_str);
         
         if (remainingTime == 0) {
-          countdown_str = "GO!";
-          clearInterval(timer);
-          init(mode);
+            // Change Gif and countdown
+            countdown_str = "Go!";
+            if(mode == 1) $("#canvas").attr("src","resources/img/push-up.gif");
+            else if (mode == 2) $("#canvas").attr("src","resources/img/squat.gif");
+            else $("#canvas").attr("src","resources/img/push-up-set-up.gif");
+
+            // Init teachable machine and webcam
+            clearInterval(timer);
+            init(mode);
         
         } else {
           countdown_str = remainingTime;
@@ -83,7 +89,7 @@ $(document).ready(function(){
     } else {
       // Decide on the mode 0 = no mode, 1 = push ups, 2 = squats
       if(mode == 0) counter_str = "";
-      else if (mode == 1) counter_str = "Push-Ups: " + currActions;
+      else if (mode == 1) counter_str = "Push-ups: " + currActions;
       else if (mode == 2) counter_str = "Squats: " + currActions;
     }
     
@@ -124,6 +130,7 @@ $(document).ready(function(){
   $("#push-up-button").mouseup(function(e){
           $("#push-up-button").css("transform", "scale(1.0)");
           mode = 1;
+          // Change canvas gif depending on mode
           $("#button-container").hide();
           $("#canvas-container").show();
           countdown(BUFFER_TIME);
