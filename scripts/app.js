@@ -89,8 +89,8 @@ $(document).ready(function(){
     } else {
       // Decide on the mode 0 = no mode, 1 = push ups, 2 = squats
       if(mode == 0) counter_str = "";
-      else if (mode == 1) counter_str = "Push-ups: " + currActions;
-      else if (mode == 2) counter_str = "Squats: " + currActions;
+      else if (mode == 1) counter_str = "Push-ups: " + currActions + " / " + MAX_ACTIONS;
+      else if (mode == 2) counter_str = "Squats: " + currActions + " / " + MAX_ACTIONS;
     }
 
     // Update counter DOM element
