@@ -146,6 +146,7 @@ $(document).ready(function(){
           mode = 2;
           $("#button-container").hide();
           $("#canvas-container").show();
+          $("#canvas").attr("src","resources/img/Setup-squats.gif");
           countdown(BUFFER_TIME);
   });
 
