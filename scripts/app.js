@@ -5,6 +5,7 @@ $(document).ready(function(){
     var currActions = 0;    
     var isStanding = true;
     var mode = 0;
+    var locked = true;
     
     const WEBCAM_SIZE = 300;  
     const BUFFER_TIME = 5;
@@ -13,7 +14,6 @@ $(document).ready(function(){
     // the link to your model provided by Teachable Machine export panel
     const PUSH_UP_MODEL_URL = "https://teachablemachine.withgoogle.com/models/RyZAgGy7F/";
     const SQUAT_MODEL_URL = "https://teachablemachine.withgoogle.com/models/xdAU4LaGu/";
-
 
     $("#button-container").show();
     $("#canvas-container").hide();   
@@ -75,11 +75,11 @@ $(document).ready(function(){
     // reset the counter DOM element
     var counter_str = "";
     
-    if(currActions > MAX_ACTIONS - 1){
-      counter_str = "Unlocked!";
-      unlockPhone();
-      resetCounters();
-      displayMenu();
+    if(currActions > MAX_ACTIONS - 1 && locked){
+        locked = false;
+        unlockPhone();
+        counter_str = "Unlocked!";
+
     } else {
       // Decide on the mode 0 = no mode, 1 = push ups, 2 = squats
       if(mode == 0) counter_str = "";
@@ -146,28 +146,23 @@ $(document).ready(function(){
 
   // Play the unlock animation, lock animation and reset the state
   function unlockPhone(){
-      console.log("unlocking...");
-      $("#phone-lock-screen").css("z-index", "1");
-      $("#phone-border").css("z-index", "2");
+    console.log("unlocking...");
+    $("#phone-lock-screen").css("z-index", "1");
+    $("#phone-border").css("z-index", "2");
 
-      // Queue up animations
-      $("#phone-lock-screen").animate({bottom: '+=500px'}, "easeOutCirc");
-      $("#phone-lock-screen").animate({bottom: '-=500px'}, "easeOutCirc");
-
-      // Wait for animations to complete then reset the state
-      $("#phone-lock-screen").promise().done(function(){
-          $("#phone-lock-screen").css("z-index", "2");
-          $("#phone-border").css("z-index", "1");
-      });
+         // Queue up animations
+    var height = $("#phone-lock-screen").css('height');
+    $("#phone-lock-screen").animate({bottom: "+=" + height}, "easeOutCirc");
   }
 
-
+  // Reset the action counter and hide counters
   function resetCounters(){
     currActions = 0;
     $("#countdown").text("");
     $("#counter").text("");
   }
 
+  // Reset the action counter and hide counters
   function displayMenu(){
     mode = 0;
     $("#button-container").show();
