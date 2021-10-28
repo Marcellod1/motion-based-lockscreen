@@ -68,6 +68,7 @@ body {
       "header header header"
       "counter counter counter"
       "canvas canvas canvas"
+      "label label label"
       "button1 button2 button3";
     justify-content: center;
     margin-top: 250px;
@@ -83,6 +84,14 @@ body {
     grid-area: counter;
 }
 
+#webcam-container{
+    grid-area: canvas;
+}
+
+#label-container{
+    grid-area: label;
+}
+
 /* Buttons */
 #reset-button {
     grid-area: button1;
@@ -90,11 +99,11 @@ body {
 }
 
 #erase-button {
-    grid-area: button2;
+    grid-area: button3;
     background-image: url(resources/img/erase-button.png);
 }
 
 #submit-button {
-    grid-area: button3;
+    grid-area: button2;
     background-image: url(resources/img/submit-button.png);
 }
